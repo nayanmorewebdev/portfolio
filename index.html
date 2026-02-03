@@ -217,6 +217,33 @@
                 justify-content: center;
             }
         }
+        #successBox {
+  display: none;
+  background: rgb(155, 255, 146);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  animation: pop 0.6s ease;
+}
+
+.checkmark {
+  font-size: 60px;
+  color: #ffffff;
+  animation: scale 0.5s ease;
+}
+
+@keyframes scale {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pop {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+#successBox p{
+    color: #161b22;
+}
     </style>
 </head>
 
@@ -301,7 +328,7 @@
             </div>
             <div class="project">
                 <a href="WEBSITE-6/Crypgo/src/index.html">
-                    <img src="crypto.avif" alt="Project 3">
+                    <img src="Crypto-Hardware-Wallets.avif" alt="Project 3">
                     <h3>Crypto</h3>
                     <p>Effective crypto website design prioritizes usability and trust through clear navigation,
                         intuitive interfaces, and mobile optimization.</p>
@@ -324,7 +351,13 @@
           
 
         </form>
-        <audio id="clickSound">
+         <div id="successBox">
+    <div class="checkmark">✔</div>
+    <h2>Message Sent</h2>
+    <p>Thank you for contacting me</p>
+  </div>
+    
+        <audio id="successSound">
   <source src="hero-1.wav" type="audio/mpeg">
 </audio>
     </section>
@@ -350,22 +383,22 @@
             window.open(whatsappURL, "_blank");
            
         }
-        const form = document.getElementById("contactForm");
-  const sound = document.getElementById("clickSound");
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault(); // page reload stop
+ const form = document.getElementById("contactForm");
+  const successBox = document.getElementById("successBox");
+  const sound = document.getElementById("successSound");
 
-    sound.currentTime = 0; // sound restart
-    sound.play();
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
 
-    // Optional success message
+    // Processing delay (like payment)
     setTimeout(() => {
-      alert("Message Sent Successfully ✅");
-      form.reset();
-    }, 500);
+      form.style.display = "none";
+      successBox.style.display = "block";
+      sound.play();
+    }, 800);
   });
-        
+
         
     </script>
 
@@ -378,8 +411,4 @@
    
 </body>
 
-
 </html>
-
-
-
