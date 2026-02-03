@@ -293,7 +293,7 @@
                 </a>
             </div>
             <div class="project">
-                <a href="website-5/src/index.html">
+                <a href="websit-5/website-2/src/index.html">
                     <img src="1.png" alt="Project 3">
                     <h3>Web Design Portfolio</h3>
                     <p>It provides a visual, in-depth look at your capabilities beyond a simple list of skills.</p>
@@ -301,7 +301,7 @@
             </div>
             <div class="project">
                 <a href="WEBSITE-6/Crypgo/src/index.html">
-                    <img src="img/Crypto-Hardware-Wallets.avif" alt="Project 3">
+                    <img src="Crypto-Hardware-Wallets.avif" alt="Project 3">
                     <h3>Crypto</h3>
                     <p>Effective crypto website design prioritizes usability and trust through clear navigation,
                         intuitive interfaces, and mobile optimization.</p>
@@ -315,14 +315,20 @@
     <section class="contact" id="contact">
         <h2>Contact Me</h2>
 
-        <form onsubmit="sendWhatsAppMessage(); return false;">
+        <form onsubmit="sendWhatsAppMessage(); return false;" id="contactForm" >
             <input type="text" id="name" placeholder="Your Name" required>
             <input type="email" id="email" placeholder="Your Email" required>
             <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
 
-            <button class="btn" type="submit">Send Message</button>
+            <button class="btn" type="submit" >Send Message  </button>
+          
+
         </form>
+        <audio id="clickSound">
+  <source src="hero-1.wav" type="audio/mpeg">
+</audio>
     </section>
+ 
  
     <script>
         function sendWhatsAppMessage() {
@@ -342,16 +348,34 @@
                 "https://wa.me/" + phoneNumber + "?text="   + whatsappMessage;
 
             window.open(whatsappURL, "_blank");
+           
         }
+        const form = document.getElementById("contactForm");
+  const sound = document.getElementById("clickSound");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // page reload stop
+
+    sound.currentTime = 0; // sound restart
+    sound.play();
+
+    // Optional success message
+    setTimeout(() => {
+      alert("Message Sent Successfully ✅");
+      form.reset();
+    }, 500);
+  });
+        
+        
     </script>
+
+
+
 
     <footer>
         © 2025 Nayan More | All Rights Reserved
     </footer>
-
+   
 </body>
 
-
 </html>
-
-
