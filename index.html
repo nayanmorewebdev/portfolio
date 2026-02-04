@@ -341,12 +341,12 @@
     <section class="contact" id="contact">
         <h2>Contact Me</h2>
 
-        <form onsubmit="sendWhatsAppMessage(); return false;" id="contactForm" >
+        <form onsubmit="sendWhatsAppMessage(); return false;" id="contactForm"  >
             <input type="text" id="name" placeholder="Your Name" required>
             <input type="email" id="email" placeholder="Your Email" required>
             <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
 
-            <button class="btn" type="submit" >Send Message  </button>
+            <button class="btn" type="submit" onclick="launchConfetti()" >Send Message  </button>
           
 
         </form>
@@ -361,7 +361,8 @@
 </audio>
     </section>
  
- 
+
+
     <script>
         function sendWhatsAppMessage() {
             var name = document.getElementById("name").value;
@@ -398,8 +399,36 @@
     }, 800);
   });
 
-        
+   
     </script>
+
+<script>
+function launchConfetti() {
+    var duration = 2 * 1000;
+    var end = Date.now() + duration;
+
+    (function frame() {
+        confetti({
+            particleCount: 6,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 }
+        });
+        confetti({
+            particleCount: 6,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 }
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    })();
+}
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 
 
